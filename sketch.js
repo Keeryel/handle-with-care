@@ -1,52 +1,35 @@
-await Canvas(500, 500);
-displayMode('maxed');
+import {initPlayer, playerActions} from './plyr.js'
 
-allSprites.drag = 5;
-allSprites.rotationDrag = 1;
+await Canvas();
 
-let walls = new Group();
-walls.color = color(0.8);
-walls.isWall = true;
+initPlayer();
 
-for (let i = 0; i < 30; i++) {
-	new walls.Sprite(jit(250), jit(250), random(10, 50), random(10, 50));
-}
+let boxes = new Group();
 
-let targets = new Group();
-targets.isTarget = true;
 
-for (let i = 0; i < 100; i++) {
-	new targets.Sprite(jit(250), jit(250), random(10, 30), random(10, 30));
-}
+let smallBox = new boxes.Sprite();
+smallBox.x = 50
+smallBox.drag = 5
+smallBox.mass = 2
+smallBox.scale = 0.6
+smallBox.rotationDrag = 5
 
-let player = new Sprite(0, -100, 30);
-player.color = 'skyblue';
-player.mass = 100;
+
+let wallA = new Sprite();
+wallA.x = -120;
+wallA.width = 220;
+wallA.rotation = 30;
+wallA.physics = STATIC;
+
+let wallB = new Sprite();
+wallB.x = 120;
+wallB.width = 220;
+wallB.rotation = -30;
+wallB.physics = STATIC;
+
 
 q5.update = function () {
-	background(0);
-
-	player.speed = 2;
-	player.direction = world.physicsTime * 50;
-
-	targets.color = color(0.5);
-
-	// limiter callback function returns true if the sprite is a wall
-	let sprites = world.rayCastAll(player, mouse, (sprite) => sprite.isWall);
-
-	for (let sprite of sprites) {
-		if (sprite.isTarget) sprite.color = 'orange';
-	}
-};
-
-q5.draw = function () {
-	fill(0.15);
-	let castRadius = player.distanceTo(mouse);
-	circle(player.x, player.y, castRadius * 2);
-
-	stroke('orange');
-	strokeWeight(2);
-	line(player.x, player.y, mouse.x, mouse.y);
-
-	noStroke();
+	background('skyblue');
+	
+  playerActions(boxes)
 };
