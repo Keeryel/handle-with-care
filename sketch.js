@@ -1,4 +1,4 @@
-import {initPlayer, playerActions} from './plyr.js'
+import {initPlayer, playerActions, isHoldingItem} from './plyr.js'
 import {deliver, initdelivery} from "./deliveries.js"
 
 await Canvas();
@@ -35,4 +35,8 @@ q5.update = function () {
   playerActions(boxes)
 
   deliver(player, deliveryText)
+
+  // if (isHoldingItem) {
+  //   startDelivery()
+  // }
 };
