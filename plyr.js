@@ -19,6 +19,8 @@ export function initPlayer() {
   maxDist = 90; 
   const offsetDistance = plyr.w; 
   offset = offsetDistance;
+
+  return plyr
 }
 
 // 2. Export the frame loop actions to pass into q5.update
