@@ -1,8 +1,10 @@
 import {initPlayer, playerActions} from './plyr.js'
+import {initTimer, timerCount, addTime} from './timer.js'
 
 await Canvas();
 
 initPlayer();
+initTimer()
 
 let boxes = new Group();
 
@@ -47,4 +49,6 @@ q5.update = function () {
 	background('skyblue');
 	
   playerActions(boxes)
+  timerCount()
 };
+
