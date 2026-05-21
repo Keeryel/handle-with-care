@@ -1,4 +1,4 @@
-import {initPlayer, playerActions} from './plyr.js'
+import {initPlayer, playerActions, holding} from './plyr.js'
 import {initTimer, timerCount, addTime} from './timer.js'
 import {deliver, initdelivery, startDelivery} from "./deliveries.js"
 
