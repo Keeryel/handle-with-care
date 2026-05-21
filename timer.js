@@ -32,6 +32,14 @@ export function timerCount(){
         let elapsedTime = millis() - startTime;
         let remainingTime = timeLimit - elapsedTime;
 
+        if (timeLimit > 5999000) {
+            timeLimit = 5999000 + elapsedTime
+        }
+        
+        if (remainingTime > 5999000) {
+            remainingTime = 5999000
+        }
+        
         if (remainingTime <= 0) {
             remainingTime = 0;
             timerRunning = false;
