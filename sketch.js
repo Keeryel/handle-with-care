@@ -1,5 +1,5 @@
-import {initPlayer, playerActions, isHoldingItem} from './plyr.js'
-import {deliver, initdelivery} from "./deliveries.js"
+import {initPlayer, playerActions, holding} from './plyr.js'
+import {deliver, initdelivery, startDelivery} from "./deliveries.js"
 
 await Canvas();
 
@@ -30,13 +30,13 @@ wallB.physics = STATIC;
 
 
 q5.update = function () {
-	background('red');
+	background('green');
 	
   playerActions(boxes)
 
   deliver(player, deliveryText)
 
-  // if (isHoldingItem) {
-  //   startDelivery()
-  // }
+  if (holding) {
+    startDelivery()
+  }
 };
