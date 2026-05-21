@@ -1,5 +1,5 @@
 export let timer;
-let timeLimit = 10 * 1000; 
+let timeLimit = 480 * 1000; 
 let startTime;
 let timerRunning = false;
 
