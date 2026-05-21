@@ -1,13 +1,12 @@
-import {initPlayer, playerActions} from './plyr.js'
-import {initTimer, timerCount, addTime} from './timer.js'
+import {initPlayer, playerActions, holding} from './plyr.js'
+import {deliver, initdelivery, startDelivery} from "./deliveries.js"
 
 await Canvas();
 
-initPlayer();
-initTimer()
+let player = initPlayer();
 
 let boxes = new Group();
-
+let deliveryText = initdelivery(player)
 
 let smallBox = new boxes.Sprite();
 smallBox.x = 50
@@ -52,8 +51,13 @@ borderX2.rotation = 90;
 borderX2.physics = STATIC;
 
 q5.update = function () {
-	background('skyblue');
+	background('green');
 	
   playerActions(boxes)
-  timerCount()
+
+  deliver(player, deliveryText)
+
+  if (holding) {
+    startDelivery()
+  }
 };
