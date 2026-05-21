@@ -20,17 +20,20 @@ export function initdelivery(player) {
 }
 
 export function deliver(player, deliveryText) {
+    let targetPos = { x: currentDelivery.destination[0], y: currentDelivery.destination[1]}
+
     deliveryText.x = player.x-200
     deliveryText.y = player.y-200
 
     if (currentDelivery.inProgress) {
         deliveryText.text = "-->"
-        deliveryText.angle = deliveryText.angleTo(currentDelivery.destination[0], currentDelivery.destination[1]);
+        deliveryText.rotateTowards(targetPos, .1, 90);
     }
 }
 
 export function startDelivery() {
-    if (!currentDelivery.inProgress) {
+    print(currentDelivery.inProgress )
+    if (currentDelivery.inProgress === false) {
         currentDelivery.inProgress = true
         currentDelivery.destination = [random(-400, 400), random(-400, 400)]
     }
