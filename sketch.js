@@ -1,12 +1,14 @@
 import {initPlayer, playerActions, holding} from './plyr.js'
 import {deliver, initdelivery, startDelivery} from "./deliveries.js"
+import {initTimer, timerCount, addTime} from './timer.js'
 
 await Canvas();
 
-let player = initPlayer();
+initPlayer();
+initTimer()
 
 let boxes = new Group();
-let deliveryText = initdelivery(player)
+
 
 let smallBox = new boxes.Sprite();
 smallBox.x = 50
@@ -16,18 +18,33 @@ smallBox.scale = 0.6
 smallBox.rotationDrag = 5
 
 
-let wallA = new Sprite();
-wallA.x = -120;
-wallA.width = 220;
-wallA.rotation = 30;
-wallA.physics = STATIC;
+let borderY1 = new Sprite();
+borderY1.x = 0;
+borderY1.y = -800;
+borderY1.width = 1600;
+borderY1.rotation = 0;
+borderY1.physics = STATIC;
 
-let wallB = new Sprite();
-wallB.x = 120;
-wallB.width = 220;
-wallB.rotation = -30;
-wallB.physics = STATIC;
+let borderY2 = new Sprite();
+borderY2.x = 0;
+borderY2.y = 800
+borderY2.width = 1600;
+borderY2.rotation = 0;
+borderY2.physics = STATIC;
 
+let borderX1 = new Sprite();
+borderX1.x = 800;
+borderX1.y = 0;
+borderX1.width = 1600;
+borderX1.rotation = 90;
+borderX1.physics = STATIC;
+
+let borderX2 = new Sprite();
+borderX2.x = -800;
+borderX2.y = 0;
+borderX2.width = 1600;
+borderX2.rotation = 90;
+borderX2.physics = STATIC;
 
 q5.update = function () {
 	background('green');
@@ -39,4 +56,5 @@ q5.update = function () {
   if (holding) {
     startDelivery()
   }
+  timerCount()
 };
