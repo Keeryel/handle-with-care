@@ -30,10 +30,10 @@ export function playerActions(boxes) {
   camera.y = lerp(camera.y, plyr.y, 0.2);
 
   // Movement
-  if (keyIsDown("w")) plyr.vel.y -= 2;
-  if (keyIsDown("s")) plyr.vel.y += 2;
-  if (keyIsDown("a")) plyr.vel.x -= 2;
-  if (keyIsDown("d")) plyr.vel.x += 2;
+  if (keyIsDown("w")) plyr.vel.y -= 3;
+  if (keyIsDown("s")) plyr.vel.y += 3;
+  if (keyIsDown("a")) plyr.vel.x -= 3;
+  if (keyIsDown("d")) plyr.vel.x += 3;
 
   // Grabbing / Dropping
   if (kb.presses("e")) {
