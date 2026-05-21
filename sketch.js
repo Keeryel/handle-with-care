@@ -1,13 +1,14 @@
 import {initPlayer, playerActions} from './plyr.js'
 import {initTimer, timerCount, addTime} from './timer.js'
+import {deliver, initdelivery, startDelivery} from "./deliveries.js"
 
 await Canvas();
 
-initPlayer();
+let player = initPlayer();
 initTimer()
 
 let boxes = new Group();
-
+let deliveryText = initdelivery(player)
 
 let smallBox = new boxes.Sprite();
 smallBox.x = 50
@@ -55,5 +56,7 @@ q5.update = function () {
 	background('skyblue');
 	
   playerActions(boxes)
-  timerCount()
-};
+  if (holding) {
+    startDelivery()
+  }
+  timerCount()};
