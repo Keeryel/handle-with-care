@@ -1,4 +1,6 @@
-let currentDelivery = {
+import {runTimer, timerRunning} from "./timer.js"
+
+export let currentDelivery = {
     destination: [0,0],
     time: 0,
     inProgress: false
@@ -71,12 +73,23 @@ function lerpAngle(current, target, step) {
 }
 
 export function startDelivery() {
-    print(currentDelivery.inProgress )
     if (currentDelivery.inProgress === false) {
-        currentDelivery.inProgress = true
-        currentDelivery.destination = [random(-100, 100), random(-100, 100)]
+        currentDelivery.destination = [random(-750, 750), random(-750, 750)]
 
         deliveryLocation.x = currentDelivery.destination[0]
         deliveryLocation.y = currentDelivery.destination[1]
+
+        runTimer(1000 * 5)
+        currentDelivery.inProgress = true
+
+        //while (timerRunning === true) {}
+        // currentDelivery.inProgress = false
+
     }
 }
+
+// q5.update = function() {
+//     if (timerRunning === false && currentDelivery.inProgress === true) {
+//         currentDelivery.inProgress = false 
+//     }
+// }

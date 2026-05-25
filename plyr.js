@@ -1,13 +1,11 @@
-// player.js
+import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/deliveries.js"
 
-// Declare variables that need to be accessed across functions in this file
 export let plyr;
 export let holding = null;
 export let isHoldingItem = false
 let maxDist;
 let offset;
 
-// 1. Export an initialization function to set up the physics bodies
 export function initPlayer() {
   plyr = new Sprite();
   plyr.w = 50;
@@ -24,7 +22,7 @@ export function initPlayer() {
 }
 
 // 2. Export the frame loop actions to pass into q5.update
-export function playerActions(boxes) {
+export function playerActions() {
   plyr.rotateTowards(mouse, 1, 0);
   camera.x = lerp(camera.x, plyr.x, 0.2);
   camera.y = lerp(camera.y, plyr.y, 0.2);
@@ -35,31 +33,56 @@ export function playerActions(boxes) {
   if (keyIsDown("a")) plyr.vel.x -= 3;
   if (keyIsDown("d")) plyr.vel.x += 3;
 
-  // Grabbing / Dropping
-  if (kb.presses("e")) {
-    if (holding) {
-      isHoldingItem = true
-      holding.vel.x = 0;
-      holding.vel.y = 0;
-      holding = null;
-    } else {
-      let near = null;
-      let min = 100; 
-      isHoldingItem = false
-      for (let box of boxes) {
-        let d = dist(mouse.x, mouse.y, box.x, box.y);
-        let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
+  let smallBox;
+  if (kb.presses("r") && currentDelivery.inProgress == false) {
+    smallBox = new Sprite();
+    smallBox.x = 50
+    smallBox.drag = 5
+    smallBox.mass = 2
+    smallBox.scale = 0.6
+    smallBox.rotationDrag = 5
+    smallBox.layer = 2
+    smallBox.opacity = 0
 
-        if (plyr_d < maxDist) {
-          if (d < min) {
-            min = d;
-            near = box;
-          }
-        }
-      }
-      if (near) holding = near;
-    }
+    startDelivery()
+    holding = smallBox
+    smallBox.opacity = 1
   }
+
+  console.log("box", smallBox != undefined)
+  console.log("prog",currentDelivery.inProgress == false )
+
+  if (currentDelivery.inProgress == false && smallBox != undefined) {
+    console.log("hey")
+    holding = null
+    smallBox.opacity = 0
+  }
+
+  // Grabbing / Dropping
+  // if (kb.presses("e")) {
+  //   if (holding) {
+  //     isHoldingItem = true
+  //     holding.vel.x = 0;
+  //     holding.vel.y = 0;
+  //     holding = null;
+  //   } else {
+  //     let near = null;
+  //     let min = 100; 
+  //     isHoldingItem = false
+  //     for (let box of boxes) {
+  //       let d = dist(mouse.x, mouse.y, box.x, box.y);
+  //       let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
+
+  //       if (plyr_d < maxDist) {
+  //         if (d < min) {
+  //           min = d;
+  //           near = box;
+  //         }
+  //       }
+  //     }
+  //     if (near) holding = near;
+  //   }
+  // }
 
   // Lock holding position
   if (holding) {

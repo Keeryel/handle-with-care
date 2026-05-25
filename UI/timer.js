@@ -1,7 +1,7 @@
 export let timer;
 let timeLimit = 480 * 1000; 
 let startTime;
-let timerRunning = false;
+export let timerRunning = false;
 
 export function initTimer(){
     timer = new Sprite();
@@ -13,10 +13,14 @@ export function initTimer(){
     timer.color = 'black';
     timer.layer = 222222222222222222222222222222222;
     timer.textSize = 24;
-    timer.textFill = "red"; 
-    
+}
+
+export function runTimer(time) {
+    timerRunning = true
+    timer.textFill = "red";
+    timeLimit = time; 
+    console.log(time)
     startTime = millis(); 
-    timerRunning = true;
 }
 
 export function addTime(secondsToAdd) {
@@ -57,7 +61,7 @@ export function timerCount(){
     timer.text = `${strMins}:${strSecs}`;
 
     // Check timerRunning directly to swap colors
-    if (!timerRunning) {
+    if (timerRunning === false) {
         timer.textFill = "green";
     }
     
