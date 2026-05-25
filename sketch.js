@@ -1,6 +1,6 @@
-import {initPlayer, playerActions, holding} from './plyr.js'
-import {initTimer, timerCount, addTime} from './timer.js'
-import {deliver, initdelivery, startDelivery} from "./deliveries.js"
+import {initPlayer, playerActions, holding} from './plyr.js' 
+import {initTimer, timerCount, addTime} from './UI/timer.js'
+import {deliver, initdelivery, startDelivery} from "./UI/deliveries.js"
 
 await Canvas();
 
@@ -54,7 +54,7 @@ borderX2.physics = STATIC;
 
 q5.update = function () {
 	background('skyblue');
-	
+	deliver(player, deliveryText)
   playerActions(boxes)
   if (holding) {
     startDelivery()
