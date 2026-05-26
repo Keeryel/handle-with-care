@@ -53,8 +53,13 @@ export function deliver(player, deliveryText) {
 
         // 3. Position the arrow in an orbit around the player using the current visual rotation
         let currentRad = deliveryText.rotation * (Math.PI / 180);
-        deliveryText.x = player.x + Math.cos(currentRad) * orbitDistance;
-        deliveryText.y = player.y + Math.sin(currentRad) * orbitDistance;
+        
+        let orbitX = player.x + Math.cos(currentRad) * orbitDistance;
+        let orbitY = player.y + Math.sin(currentRad) * orbitDistance;
+
+        
+        deliveryText.x = lerp(deliveryText.x, orbitX, 0.5)
+        deliveryText.y = lerp(deliveryText.y, orbitY, 0.5)
         deliveryText.opacity = 1
         
         
