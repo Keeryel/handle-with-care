@@ -11,6 +11,17 @@ initMoney()
 
 let deliveryText = initdelivery(player)
 
+let boxes = new Group()
+
+let smallBox = new boxes.Sprite()
+smallBox.x = 50
+smallBox.drag = 5
+smallBox.mass = 2
+smallBox.scale = 0.6
+smallBox.rotationDrag = 5
+smallBox.layer = 2
+smallBox.opacity = 0
+
 let borderY1 = new Sprite();
 borderY1.x = 0;
 borderY1.y = -800;
@@ -51,7 +62,7 @@ q5.update = function () {
   if (holding) {
     startDelivery()
   }
-  playerActions()
+  playerActions(smallBox)
   timerCount()
 
   if (timerRunning === false && currentDelivery.inProgress === true) {

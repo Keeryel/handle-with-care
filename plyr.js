@@ -22,43 +22,30 @@ export function initPlayer() {
 }
 
 // 2. Export the frame loop actions to pass into q5.update
-export function playerActions() {
+export function playerActions(boxes) {
   plyr.rotateTowards(mouse, 1, 0);
   camera.x = lerp(camera.x, plyr.x, 0.2);
   camera.y = lerp(camera.y, plyr.y, 0.2);
 
   // Movement
-  if (keyIsDown("w")) {
-    plyr.vel.y -= 3;
-  console.log("moving up!")
-  }
+  if (keyIsDown("w")) plyr.vel.y -= 3;
   if (keyIsDown("s")) plyr.vel.y += 3;
   if (keyIsDown("a")) plyr.vel.x -= 3;
   if (keyIsDown("d")) plyr.vel.x += 3;
 
-  let smallBox;
   if (kb.presses("r") && currentDelivery.inProgress == false) {
-    smallBox = new Sprite();
-    smallBox.x = 50
-    smallBox.drag = 5
-    smallBox.mass = 2
-    smallBox.scale = 0.6
-    smallBox.rotationDrag = 5
-    smallBox.layer = 2
-    smallBox.opacity = 0
-
     startDelivery()
-    holding = smallBox
-    smallBox.opacity = 1
+    holding = boxes
+    boxes.opacity = 1
   }
 
-  console.log("box", smallBox != undefined)
+  console.log("box", boxes != undefined)
   console.log("prog",currentDelivery.inProgress == false )
 
-  if (currentDelivery.inProgress == false && smallBox != undefined) {
+  if (currentDelivery.inProgress == false && boxes != undefined) {
     console.log("hey")
     holding = null
-    smallBox.opacity = 0
+    boxes.opacity = 0
   }
 
   // Grabbing / Dropping
