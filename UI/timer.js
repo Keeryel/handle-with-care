@@ -13,8 +13,6 @@ export function initTimer(){
     timer.color = 'black';
     timer.layer = 222222222222222222222222222222222;
     timer.textSize = 24;
-    
-    return timer
 }
 
 export function runTimer(time) {
