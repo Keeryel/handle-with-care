@@ -25,8 +25,8 @@ export function giveMoney(pay){
 
 export function displayMoney(){
     let money = String(balance)
-    cashUI.text = `${money}`
+    cashUI.text = `$${money}`
     cashUI.x = camera.x - 300
-    cashUI.y = camera.y - 200
+    cashUI.y = camera.y - 250
 }
 

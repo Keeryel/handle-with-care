@@ -1,6 +1,6 @@
 import {initPlayer, playerActions, holding} from './plyr.js' 
-import {initTimer, timerCount, addTime} from './UI/timer.js'
-import {deliver, initdelivery, startDelivery} from "./UI/deliveries.js"
+import {initTimer, timerCount, addTime, timerRunning} from './UI/timer.js'
+import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/deliveries.js"
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 
 await Canvas();
@@ -46,10 +46,11 @@ borderX2.physics = STATIC;
 q5.update = function () {
 	background('skyblue');
 	deliver(player, deliveryText)
-  playerActions(boxes)
+
   displayMoney()
   if (holding) {
     startDelivery()
+  }
   playerActions()
   timerCount()
 
@@ -57,3 +58,4 @@ q5.update = function () {
     currentDelivery.inProgress = false 
   }
 };
+
