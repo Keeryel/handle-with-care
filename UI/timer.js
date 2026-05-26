@@ -69,5 +69,5 @@ export function timerCount(){
     
 
     timer.x = camera.x;
-    timer.y = camera.y - (canvas.height / 2) + 30; 
+    timer.y = camera.y - (canvas.height / 3) - 50; 
 }
