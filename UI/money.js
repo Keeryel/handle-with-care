@@ -1,15 +1,17 @@
+import {ui} from '../sketch.js'
+
 let balance = 0
 let paymentComplete = false
 let cashUI
 
 export function initMoney(){
-    cashUI = new Sprite()
+    cashUI = new ui.Sprite()
     cashUI.overlap(allSprites)
     cashUI.text = ""
     cashUI.textSize = 12
     cashUI.fill = "gray"
     cashUI.stroke = "gray"
-    cashUI.layer = 9999999999999
+    cashUI.layer = 999
 }
 
 export function giveMoney(pay){

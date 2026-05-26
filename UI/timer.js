@@ -1,17 +1,19 @@
+import {ui} from '../sketch.js'
+
 export let timer;
 let timeLimit = 480 * 1000; 
 let startTime;
 export let timerRunning = false;
 
 export function initTimer(){
-    timer = new Sprite();
+    timer = new ui.Sprite();
     timer.w = 100;
     timer.h = 40;
     timer.overlap(allSprites);
     timer.collider = 'static';
     timer.text = "";
     timer.color = 'black';
-    timer.layer = 222222222222222222222222222222222;
+    timer.layer = 1000;
     timer.textSize = 24;
 }
 
@@ -64,8 +66,9 @@ export function timerCount(){
     if (timerRunning === false) {
         timer.textFill = "green";
     }
-    
+    let camX = camera.x;
+    let camY = camera.y - (canvas.height / 3) - 50; 
 
-    timer.x = camera.x;
-    timer.y = camera.y - (canvas.height / 3) - 50; 
+    timer.x = lerp(timer.x, camX, 0.4)
+    timer.y = lerp(timer.y, camY, 0.4)
 }

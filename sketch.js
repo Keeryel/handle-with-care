@@ -5,11 +5,18 @@ import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 
 await Canvas();
 
+export let ui
+ui = new Group
+ui.autoDraw = false
+ui.layer = 9999
+
 let player = initPlayer();
 initTimer()
 initMoney()
 
 let deliveryText = initdelivery(player)
+
+
 
 let boxes = new Group()
 
