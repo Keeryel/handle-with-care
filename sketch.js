@@ -48,7 +48,7 @@ q5.update = function () {
 	deliver(player, deliveryText)
 
   displayMoney()
-  if (holding) {
+  if (holding && currentDelivery.inProgress === false) {
     startDelivery()
   }
   playerActions()

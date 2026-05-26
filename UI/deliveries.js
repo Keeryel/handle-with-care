@@ -81,15 +81,9 @@ export function startDelivery() {
 
         runTimer(1000 * 5)
         currentDelivery.inProgress = true
-
+ 
         //while (timerRunning === true) {}
         // currentDelivery.inProgress = false
 
     }
 }
-
-// q5.update = function() {
-//     if (timerRunning === false && currentDelivery.inProgress === true) {
-//         currentDelivery.inProgress = false 
-//     }
-// }

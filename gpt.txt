@@ -1,4 +1,2 @@
 used to learn how to print
-2
-3
 used to learn how to pivot arrow around player
