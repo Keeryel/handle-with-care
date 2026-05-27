@@ -14,6 +14,9 @@ ui = new Group()
 menu.layer = 11
 ui.layer = 10
 
+menu.overlap(allSprites)
+ui.overlap(allSprites)
+
 let player = initPlayer();
 player.layer = 9
 
