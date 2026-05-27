@@ -6,7 +6,6 @@ let cashUI
 
 export function initMoney(){
     cashUI = new ui.Sprite()
-    cashUI.overlap(allSprites)
     cashUI.text = ""
     cashUI.textSize = 16
     cashUI.textFill = "green"

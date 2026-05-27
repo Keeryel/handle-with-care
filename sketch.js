@@ -2,7 +2,7 @@ import {initPlayer, playerActions, holding} from './plyr.js'
 import {initTimer, timerCount, addTime, timerRunning} from './UI/timer.js'
 import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/deliveries.js"
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
-
+import {initLevels, levelUp} from './UI/levels.js'
 await Canvas();
 
 export let ui
@@ -17,11 +17,15 @@ ui.layer = 10
 menu.overlap(allSprites)
 ui.overlap(allSprites)
 
+menu.physics = STATIC
+ui.physics = STATIC
+
 let player = initPlayer();
 player.layer = 9
 
 initTimer()
 initMoney()
+initLevels()
 
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
@@ -91,5 +95,6 @@ q5.update = function () {
   timerCount()
   deliver(player, deliveryText)
   displayMoney()
+  levelUp()
 };
 

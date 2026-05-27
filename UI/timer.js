@@ -9,8 +9,6 @@ export function initTimer(){
     timer = new ui.Sprite();
     timer.w = 100;
     timer.h = 40;
-    timer.overlap(allSprites);
-    timer.collider = 'static';
     timer.text = "";
     timer.color = 'black';
     timer.layer = 1000;
