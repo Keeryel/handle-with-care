@@ -8,10 +8,12 @@ export function initMoney(){
     cashUI = new ui.Sprite()
     cashUI.overlap(allSprites)
     cashUI.text = ""
-    cashUI.textSize = 12
-    cashUI.fill = "gray"
-    cashUI.stroke = "gray"
+    cashUI.textSize = 16
+    cashUI.textFill = "green"
+    cashUI.fill = "transparent"
+    cashUI.stroke = "transparent"
     cashUI.layer = 999
+    
 }
 
 export function giveMoney(pay){
