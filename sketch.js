@@ -6,7 +6,12 @@ import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 await Canvas();
 
 export let ui
-ui = new Group
+export let menu
+
+menu = new Group()
+ui = new Group()
+
+menu.layer = 11
 ui.layer = 10
 
 let player = initPlayer();
