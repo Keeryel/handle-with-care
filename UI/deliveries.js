@@ -29,6 +29,7 @@ export function initdelivery(player) {
     deliveryLocation.fill = "transparent"
     deliveryLocation.w = 20
     deliveryLocation.h = deliveryLocation.w
+    deliveryLocation.layer = 2
 
 
     return deliveryText
