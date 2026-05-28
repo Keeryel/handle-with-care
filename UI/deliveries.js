@@ -1,4 +1,5 @@
 import {runTimer, timerRunning} from "./timer.js"
+import {initLevels, levelUp, giveExp} from './levels.js'
 
 export let currentDelivery = {
     destination: [0,0],
@@ -33,6 +34,11 @@ export function initdelivery(player) {
 
 
     return deliveryText
+}
+
+export function finishDelivery() {
+    giveExp(100)
+    currentDelivery.inProgress = false
 }
 
 export function deliver(player, deliveryText) {
