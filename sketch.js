@@ -98,8 +98,8 @@ q5.update = function () {
     currentDelivery.inProgress = false 
   }
 
-  if (smallBox.x >= currentDelivery.destination[0]-30 && smallBox.x <= currentDelivery.destination[0]+30 &&
-    smallBox.y >= currentDelivery.destination[1]-30 && smallBox.y <= currentDelivery.destination[1]+30
+  if (smallBox.x >= currentDelivery.destination[0] && smallBox.x <= currentDelivery.destination[0]+20 &&
+    smallBox.y >= currentDelivery.destination[1] && smallBox.y <= currentDelivery.destination[1]+20
     )
   {
     finishDelivery()
