@@ -34,15 +34,17 @@ deliveryText.layer = 8
 
 let boxes = new Group()
 boxes.layer = 2
+boxes.collider = 'dynamic'
+boxes.drag = 5
+boxes.rotationDrag = 5
+boxes.opacity = 0
 
 let smallBox = new boxes.Group()
 smallBox.x = 50
-smallBox.drag = 5
 smallBox.mass = 2
 smallBox.scale = 0.6
-smallBox.rotationDrag = 5
-smallBox.opacity = 0
-smallBox.collider = 'dynamic'
+
+
 
 let b = new smallBox.Sprite()
 
