@@ -1,6 +1,6 @@
 import {initPlayer, playerActions, holding} from './plyr.js' 
 import {initTimer, timerCount, addTime, timerRunning} from './UI/timer.js'
-import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/deliveries.js"
+import {deliver, initdelivery, startDelivery, currentDelivery, finishDelivery} from "./UI/deliveries.js"
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 import {initLevels, levelUp} from './UI/levels.js'
 await Canvas();
@@ -94,6 +94,13 @@ q5.update = function () {
 
   if (timerRunning === false && currentDelivery.inProgress === true) {
     currentDelivery.inProgress = false 
+  }
+
+  if (smallBox.x >= currentDelivery.destination[0] && smallBox.x <= currentDelivery.destination[0]+20 &&
+    smallBox.y >= currentDelivery.destination[1] && smallBox.y <= currentDelivery.destination[1]+20
+    )
+  {
+    finishDelivery()
   }
   timerCount()
   deliver(player, deliveryText)
