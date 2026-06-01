@@ -1,7 +1,7 @@
 import {ui} from '../sketch.js'
 
 export let timer;
-let timeLimit = 480 * 1000; 
+let timeLimit = 1 * 60 * 1000; 
 let startTime;
 export let timerRunning = false;
 
@@ -18,8 +18,7 @@ export function initTimer(){
 export function runTimer(time) {
     timerRunning = true
     timer.textFill = "red";
-    timeLimit = time; 
-    console.log(time)
+    //timeLimit = time; 
     startTime = millis(); 
 }
 

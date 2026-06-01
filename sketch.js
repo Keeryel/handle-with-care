@@ -99,7 +99,8 @@ q5.update = function () {
   }
 
   if (smallBox.x >= currentDelivery.destination[0] && smallBox.x <= currentDelivery.destination[0]+20 &&
-    smallBox.y >= currentDelivery.destination[1] && smallBox.y <= currentDelivery.destination[1]+20
+    smallBox.y >= currentDelivery.destination[1] && smallBox.y <= currentDelivery.destination[1]+20 &&
+    holding == null
     )
   {
     finishDelivery()

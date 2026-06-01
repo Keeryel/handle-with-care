@@ -50,10 +50,10 @@ export function playerActions(boxes) {
   // Grabbing / Dropping
   if (kb.presses("e")) {
     if (holding) {
-      //   isHoldingItem = true
-      //   holding.vel.x = 0;
-      //   holding.vel.y = 0;
-      //   holding = null;
+        isHoldingItem = true
+        holding.vel.x = 0;
+        holding.vel.y = 0;
+        holding = null;
       }
     else {
         let near = null;
