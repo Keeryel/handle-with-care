@@ -12,7 +12,7 @@ export function initPlayer() {
   plyr.h = plyr.w;
   plyr.drag = 15;
   plyr.mass = 20;
-  plyr.rotationDrag = 5; // Fixed rotation drag
+  plyr.rotationDrag = 0.1; // Fixed rotation drag
 
   const offsetDistance = plyr.w; 
   offset = offsetDistance;
