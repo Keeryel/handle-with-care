@@ -37,12 +37,7 @@ export function playerActions(boxes) {
     holding = boxes
     boxes.opacity = 1
   }
-
-  console.log("box", boxes != undefined)
-  console.log("prog",currentDelivery.inProgress == false )
-
   if (currentDelivery.inProgress == false && boxes != undefined) {
-    console.log("hey")
     holding = null
     boxes.opacity = 0
   }

@@ -1,4 +1,5 @@
 import {ui} from '../sketch.js'
+import { giveMoney } from "./money.js"
 
 export let level
 
@@ -24,6 +25,8 @@ export function levelUp(){
         exp -= t
         currentLevel += 1
         t = t
+        giveMoney(3.00)
+        
     }
 
     level.text = `LVL: ${currentLevel}`

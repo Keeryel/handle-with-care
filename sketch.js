@@ -41,6 +41,7 @@ boxes.opacity = 0
 
 let smallBox = new boxes.Group()
 smallBox.x = 50
+smallBox.y = 0
 smallBox.mass = 2
 smallBox.scale = 0.6
 
@@ -98,15 +99,19 @@ q5.update = function () {
     currentDelivery.inProgress = false 
   }
 
-  if (smallBox.x >= currentDelivery.destination[0] && smallBox.x <= currentDelivery.destination[0]+20 &&
-    smallBox.y >= currentDelivery.destination[1] && smallBox.y <= currentDelivery.destination[1]+20 &&
+
+  if (smallBox.x >= currentDelivery.destination[0]-20 && smallBox.x <= currentDelivery.destination[0]+20 &&
+    smallBox.y >= currentDelivery.destination[1]-20 && smallBox.y <= currentDelivery.destination[1]+20 &&
     holding == null
-    )
-  {
+    ) 
+    {
     finishDelivery()
+    smallBox.x = 50
+    smallBox.y = 0
   }
   timerCount()
-  deliver(player, deliveryText)
+  deliver(player
+    , deliveryText)
   displayMoney()
   levelUp()
 };

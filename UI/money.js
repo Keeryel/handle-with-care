@@ -19,6 +19,16 @@ export function giveMoney(pay){
     if(!paymentComplete){
         balance += pay
         paymentComplete = true
+
+        // let popup = new Sprite(0, 0, 180, 35, 'none'); // 'none' collider for UI
+        // popup.color = 'lightblue';
+        // popup.text = "me hwne money";
+        
+        // // Drift up slightly while active
+        // popup.vel.y = -1; 
+        
+        // Fade out over 1.5 seconds (90 frames)
+        //popup.life = 90; 
     }
     if(paymentComplete){
         pay = 0
