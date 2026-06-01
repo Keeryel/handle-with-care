@@ -3,7 +3,7 @@ import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/delive
 export let plyr;
 export let holding = null;
 export let isHoldingItem = false
-let maxDist;
+let maxDist =90
 let offset;
 
 export function initPlayer() {
@@ -14,7 +14,6 @@ export function initPlayer() {
   plyr.mass = 20;
   plyr.rotationDrag = 5; // Fixed rotation drag
 
-  maxDist = 90; 
   const offsetDistance = plyr.w; 
   offset = offsetDistance;
 
@@ -51,30 +50,29 @@ export function playerActions(boxes) {
   // Grabbing / Dropping
   if (kb.presses("e")) {
     if (holding) {
-      isHoldingItem = true
-      holding.vel.x = 0;
-      holding.vel.y = 0;
-      holding = null;
-    }
-  }
-  // else {
-  //     let near = null;
-  //     let min = 100; 
-  //     isHoldingItem = false
-  //     for (let box of boxes) {
-  //       let d = dist(mouse.x, mouse.y, box.x, box.y);
-  //       let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
+      //   isHoldingItem = true
+      //   holding.vel.x = 0;
+      //   holding.vel.y = 0;
+      //   holding = null;
+      }
+    else {
+        let near = null;
+        let min = 100; 
+        isHoldingItem = false
+        for (let box of boxes) {
+          let d = dist(mouse.x, mouse.y, box.x, box.y);
+          let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
 
-  //       if (plyr_d < maxDist) {
-  //         if (d < min) {
-  //           min = d;
-  //           near = box;
-  //         }
-  //       }
-  //     }
-  //     if (near) holding = near;
-  //   }
-  // }
+          if (plyr_d < maxDist) {
+            if (d < min) {
+              min = d;
+              near = box;
+            }
+          }
+        }
+        if (near) holding = near;
+      }
+  }
 
   // Lock holding position
   if (holding) {
