@@ -30,8 +30,6 @@ initLevels()
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
 
-
-
 let boxes = new Group()
 boxes.layer = 2
 boxes.collider = 'dynamic'
@@ -44,8 +42,6 @@ smallBox.x = 50
 smallBox.y = 0
 smallBox.mass = 2
 smallBox.scale = 0.6
-
-
 
 let b = new smallBox.Sprite()
 
@@ -86,19 +82,15 @@ borderX2.physics = STATIC;
 
 q5.update = function () {
 	background('skyblue');
-	
 
- 
   if (holding) {
     startDelivery()
   }
   playerActions(smallBox)
   
-
   if (timerRunning === false && currentDelivery.inProgress === true) {
     currentDelivery.inProgress = false 
   }
-
 
   if (smallBox.x >= currentDelivery.destination[0]-20 && smallBox.x <= currentDelivery.destination[0]+20 &&
     smallBox.y >= currentDelivery.destination[1]-20 && smallBox.y <= currentDelivery.destination[1]+20 &&
@@ -110,8 +102,7 @@ q5.update = function () {
     smallBox.y = 0
   }
   timerCount()
-  deliver(player
-    , deliveryText)
+  deliver(player, deliveryText)
   displayMoney()
   levelUp()
 };

@@ -1,4 +1,5 @@
 import {ui} from '../sketch.js'
+import {initPlayer, playerActions, holding} from '../plyr.js' 
 
 export let timer;
 let timeLimit = 1 * 60 * 1000; 
@@ -30,6 +31,10 @@ export function addTime(secondsToAdd) {
 
 export function timerCount(){
     let timeLeft = 0;
+
+    if (!holding) {
+        timerRunning = false
+    }
 
     if (timerRunning) {
         let elapsedTime = millis() - startTime;
@@ -68,4 +73,6 @@ export function timerCount(){
 
     timer.x = lerp(timer.x, camX, 0.4)
     timer.y = lerp(timer.y, camY, 0.4)
+
+    
 }
