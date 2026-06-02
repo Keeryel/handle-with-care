@@ -22,7 +22,8 @@ export function initPlayer() {
 
 // 2. Export the frame loop actions to pass into q5.update
 export function playerActions(boxes) {
-  plyr.rotateTowards(mouse, 1, 0);
+  plyr.rotateTowards(  Math.atan2(plyr.y - mouse.y, mouse.x - plyr.x)  , 1);
+  print(mouse)
   camera.x = lerp(camera.x, plyr.x, 0.2);
   camera.y = lerp(camera.y, plyr.y, 0.2);
 

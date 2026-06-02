@@ -20,7 +20,7 @@ export function giveMoney(pay){
         balance += pay
         paymentComplete = true
 
-        // let popup = new Sprite(0, 0, 180, 35, 'none'); // 'none' collider for UI
+        //let popup = new Sprite(0, 0, 180, 35, 'none');
         // popup.color = 'lightblue';
         // popup.text = "me hwne money";
         
