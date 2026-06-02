@@ -36,14 +36,14 @@ boxes.collider = 'dynamic'
 boxes.drag = 5
 boxes.rotationDrag = 5
 boxes.opacity = 0
+boxes.mass = 2
+boxes.scale = 0.6
+boxes.color = "brown"
 
-let smallBox = new boxes.Group()
+let smallBox = new boxes.Sprite()
 smallBox.x = 50
 smallBox.y = 0
-smallBox.mass = 2
-smallBox.scale = 0.6
-
-let b = new smallBox.Sprite()
+smallBox.visible = false
 
 let boundiary =  new Group()
 boundiary.layer = 3
@@ -98,8 +98,10 @@ q5.update = function () {
     ) 
     {
     finishDelivery()
-    smallBox.x = 50
+    new boxes.Sprite(smallBox.x, smallBox.y)
+    smallBox.x = 0
     smallBox.y = 0
+    smallBox.visible = false
   }
   timerCount()
   deliver(player, deliveryText)

@@ -35,11 +35,11 @@ export function playerActions(boxes) {
   if (kb.presses("r") && currentDelivery.inProgress == false) {
     startDelivery()
     holding = boxes
-    boxes.opacity = 1
+    boxes.visible = true
   }
   if (currentDelivery.inProgress == false && boxes != undefined) {
     holding = null
-    boxes.opacity = 0
+    boxes.visible = false
   }
 
   // Grabbing / Dropping
