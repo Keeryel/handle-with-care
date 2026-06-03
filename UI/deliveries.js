@@ -1,5 +1,6 @@
 import {runTimer, timerRunning, remainingTime} from "./timer.js"
 import {initLevels, levelUp, giveExp} from './levels.js'
+import {addTime} from './timer.js'
 import {giveMoney} from './money.js'
 import {ui} from "../sketch.js"
 
@@ -41,6 +42,7 @@ export function initdelivery(player) {
 export function finishDelivery() {
     giveExp(100)
     giveMoney(1.25)
+    addTime(30)
     currentDelivery.inProgress = false
 
     if (popup) return;
