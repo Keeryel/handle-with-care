@@ -20,15 +20,16 @@ export function giveMoney(pay){
         balance += pay
         paymentComplete = true
 
-        //let popup = new Sprite(0, 0, 180, 35, 'none');
-        // popup.color = 'lightblue';
-        // popup.text = "me hwne money";
+        let popup = new ui.Sprite(cashUI.x, cashUI.y + 20, 120, 25, 'none');
+        popup.color = 'lightblue';
+        popup.text = `+$${pay.toFixed(2)}`;
+        popup.textFill = 'black';
+        popup.textSize = 14;
+        popup.layer = 1000; 
         
-        // // Drift up slightly while active
-        // popup.vel.y = -1; 
+        popup.vel.y = -0.5; 
         
-        // Fade out over 1.5 seconds (90 frames)
-        //popup.life = 90; 
+        popup.life = 90; 
     }
     if(paymentComplete){
         pay = 0

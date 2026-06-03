@@ -45,10 +45,10 @@ smallBox.x = 50
 smallBox.y = 0
 smallBox.visible = false
 
-let boundiary =  new Group()
-boundiary.layer = 3
+let boundary =  new Group()
+boundary.layer = 3
 
-let borderY1 = new boundiary.Sprite();
+let borderY1 = new boundary.Sprite();
 borderY1.x = 0;
 borderY1.y = -800;
 borderY1.w = 1600;
@@ -56,7 +56,7 @@ borderY1.h = 100;
 borderY1.rotation = 0;
 borderY1.physics = STATIC;
 
-let borderY2 = new boundiary.Sprite();
+let borderY2 = new boundary.Sprite();
 borderY2.x = 0;
 borderY2.y = 800
 borderY2.w = 1600;
@@ -64,7 +64,7 @@ borderY2.h = 100;
 borderY2.rotation = 0;
 borderY2.physics = STATIC;
 
-let borderX1 = new boundiary.Sprite();
+let borderX1 = new boundary.Sprite();
 borderX1.x = 800;
 borderX1.y = 0;
 borderX1.w = 1600;
@@ -72,7 +72,7 @@ borderX1.h = 100;
 borderX1.rotation = 90;
 borderX1.physics = STATIC;
 
-let borderX2 = new boundiary.Sprite();
+let borderX2 = new boundary.Sprite();
 borderX2.x = -800;
 borderX2.y = 0;
 borderX2.w = 1600;
