@@ -3,6 +3,7 @@ import {initTimer, timerCount, addTime, timerRunning} from './UI/timer.js'
 import {deliver, initdelivery, startDelivery, currentDelivery, finishDelivery} from "./UI/deliveries.js"
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 import {initLevels, levelUp} from './UI/levels.js'
+import {boxes, smallBox, initBoxes} from './gameObj/boxes.js'
 await Canvas();
 
 export let ui
@@ -26,24 +27,12 @@ player.layer = 9
 initTimer()
 initMoney()
 initLevels()
+initBoxes()
 
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
 
-let boxes = new Group()
-boxes.layer = 2
-boxes.collider = 'dynamic'
-boxes.drag = 5
-boxes.rotationDrag = 5
-boxes.opacity = 0
-boxes.mass = 2
-boxes.scale = 0.6
-boxes.color = "brown"
-
-let smallBox = new boxes.Sprite()
-smallBox.x = 50
-smallBox.y = 0
-smallBox.visible = false
+let box = new smallBox.Sprite()
 
 let boundary =  new Group()
 boundary.layer = 3
@@ -98,7 +87,7 @@ q5.update = function () {
     ) 
     {
     finishDelivery()
-    new boxes.Sprite(smallBox.x, smallBox.y)
+    new smallBox.Sprite(smallBox.x, smallBox.y)
     smallBox.x = 0
     smallBox.y = 0
     smallBox.visible = false
