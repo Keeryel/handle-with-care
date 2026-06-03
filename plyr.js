@@ -2,7 +2,6 @@ import {deliver, initdelivery, startDelivery, currentDelivery} from "./UI/delive
 
 export let plyr;
 export let holding = null;
-export let isHoldingItem = false
 let maxDist =90
 let offset;
 
@@ -46,7 +45,7 @@ export function playerActions(boxes) {
   // Grabbing / Dropping
   if (kb.presses("e")) {
     if (holding) {
-        isHoldingItem = true
+        
         holding.vel.x = 0;
         holding.vel.y = 0;
         holding = null;
@@ -54,7 +53,6 @@ export function playerActions(boxes) {
     else {
         let near = null;
         let min = 100; 
-        isHoldingItem = false
         for (let box of boxes) {
           let d = dist(mouse.x, mouse.y, box.x, box.y);
           let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
@@ -81,7 +79,6 @@ export function playerActions(boxes) {
 
   // Throwing (kind of buggy, just walk around the box untill it works)
   if (kb.presses("q") && holding) {
-    isHoldingItem = false
     const strength = 10;
     
     let f_app = (plyr.vel.x * cos(plyr.rotation)) + (plyr.vel.y * sin(plyr.rotation));
