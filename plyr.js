@@ -54,7 +54,7 @@ export function playerActions(boxes) {
     else {
         let near = null;
         let min = 100; 
-        if (typeof(boxes) != Array) return
+        if (typeof(boxes) != Array) return;
         for (let box of boxes) {
           let d = dist(mouse.x, mouse.y, box.x, box.y);
           let plyr_d = dist(plyr.x, plyr.y, box.x, box.y);
