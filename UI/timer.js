@@ -6,6 +6,7 @@ let timeLimit = 1 * 60 * 1000;
 export let remainingTime = 0
 let startTime;
 export let timerRunning = false;
+let timeLeft = 0;
 
 export function initTimer(){
     timer = new ui.Sprite();
@@ -15,6 +16,7 @@ export function initTimer(){
     timer.color = 'black';
     timer.layer = 1000;
     timer.textSize = 24;
+    
 }
 
 export function runTimer(time) {
@@ -31,7 +33,7 @@ export function addTime(secondsToAdd) {
 }
 
 export function timerCount(){
-    let timeLeft = 0;
+    
 
     if (!holding) {
         timerRunning = false
@@ -53,7 +55,7 @@ export function timerCount(){
             remainingTime = 0;
             timerRunning = false;
         }
-
+        
         timeLeft = Math.floor(remainingTime / 1000);
     }
 
