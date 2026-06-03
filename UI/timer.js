@@ -3,6 +3,7 @@ import {initPlayer, playerActions, holding} from '../plyr.js'
 
 export let timer;
 let timeLimit = 1 * 60 * 1000; 
+export let remainingTime = 0
 let startTime;
 export let timerRunning = false;
 
@@ -38,7 +39,7 @@ export function timerCount(){
 
     if (timerRunning) {
         let elapsedTime = millis() - startTime;
-        let remainingTime = timeLimit - elapsedTime;
+        remainingTime = timeLimit - elapsedTime;
 
         if (timeLimit > 5999000) {
             timeLimit = 5999000 + elapsedTime
@@ -73,6 +74,4 @@ export function timerCount(){
 
     timer.x = lerp(timer.x, camX, 0.4)
     timer.y = lerp(timer.y, camY, 0.4)
-
-    
 }

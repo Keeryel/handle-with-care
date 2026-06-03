@@ -1,12 +1,14 @@
-import {runTimer, timerRunning} from "./timer.js"
+import {runTimer, timerRunning, remainingTime} from "./timer.js"
 import {initLevels, levelUp, giveExp} from './levels.js'
 import {giveMoney} from './money.js'
+import {ui} from "../sketch.js"
 
 export let currentDelivery = {
     destination: [0,0],
     time: 0,
     inProgress: false
 }
+let popup
 let deliveryLocation
 
 export function initdelivery(player) {
@@ -33,7 +35,6 @@ export function initdelivery(player) {
     deliveryLocation.h = deliveryLocation.w
     deliveryLocation.layer = 2
 
-
     return deliveryText
 }
 
@@ -41,6 +42,27 @@ export function finishDelivery() {
     giveExp(100)
     giveMoney(1.25)
     currentDelivery.inProgress = false
+
+    if (popup) return;
+    let minutes = Math.floor( Math.floor(remainingTime / 1000) / 60);
+    let seconds =  Math.floor(remainingTime / 1000) % 60;
+    
+    let strMins = minutes < 10 ? "0" + minutes : minutes;
+    let strSecs = seconds < 10 ? "0" + seconds : seconds;
+    
+    popup = new ui.Sprite();
+    popup.text = `Finished Delivery! ${strMins}:${strSecs}`;
+    popup.fill = "transparent"
+    popup.stroke = "transparent"
+    popup.textFill = 'black';
+    popup.textSize = 14;
+    popup.layer = 1000; 
+        
+    popup.life = 90; 
+
+    setTimeout(() => {
+        popup = undefined
+    }, 1450)
 }
 
 export function deliver(player, deliveryText) {
@@ -71,12 +93,23 @@ export function deliver(player, deliveryText) {
         deliveryText.y = lerp(deliveryText.y, orbitY, 0.5)
         deliveryText.opacity = 1
         
+        if (popup) {
+            popup.x = deliveryText.x
+            popup.y = deliveryText.y + 30
+        }
         
     } else {
         // Fallback: If no delivery, keep arrow hidden or centered inside player
+
+        
         deliveryText.x = player.x;
         deliveryText.y = player.y;
         deliveryText.opacity = 0
+
+        if (popup) {
+            popup.x = deliveryText.x
+            popup.y = deliveryText.y + 30
+        }
     }
 }
 
