@@ -3,6 +3,7 @@ import {ui} from '../sketch.js'
 let balance = 0
 let paymentComplete = false
 let cashUI
+let popup
 
 export function initMoney(){
     cashUI = new ui.Sprite()
@@ -20,16 +21,20 @@ export function giveMoney(pay){
         balance += pay
         paymentComplete = true
 
-        let popup = new ui.Sprite(cashUI.x, cashUI.y + 20, 120, 25, 'none');
-        popup.color = 'lightblue';
+        if (popup) return;
+        popup = new ui.Sprite();
         popup.text = `+$${pay.toFixed(2)}`;
+        popup.fill = "transparent"
+        popup.stroke = "transparent"
         popup.textFill = 'black';
         popup.textSize = 14;
         popup.layer = 1000; 
-        
-        popup.vel.y = -0.5; 
-        
+                
         popup.life = 90; 
+
+        setTimeout(() => {
+            popup = undefined
+        }, 1450)
     }
     if(paymentComplete){
         pay = 0
@@ -44,5 +49,9 @@ export function displayMoney(){
     let cy = camera.y - (canvas.h / 3) - 30
     cashUI.x = lerp(cashUI.x, cx, .5)
     cashUI.y = lerp(cashUI.y, cy, .5)
+    if (popup) {
+        popup.x = cashUI.x
+        popup.y = cashUI.y + 30
+    }
 }
 
