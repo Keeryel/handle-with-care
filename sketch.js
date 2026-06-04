@@ -3,10 +3,13 @@ import {initTimer, timerCount, addTime, timerRunning} from './UI/timer.js'
 import {deliver, initdelivery, startDelivery, currentDelivery, finishDelivery} from "./UI/deliveries.js"
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 import {initLevels, levelUp} from './UI/levels.js'
+import {initMainMenu, showMainMenu, hideMainMenu} from "./UI/mainmenu.js"
 await Canvas();
 
 export let ui
 export let menu
+
+let mainMenuVisible = true
 
 menu = new Group()
 ui = new Group()
@@ -29,6 +32,9 @@ initLevels()
 
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
+
+initMainMenu()
+
 
 let boxes = new Group()
 boxes.layer = 2
@@ -83,6 +89,7 @@ borderX2.physics = STATIC;
 q5.update = function () {
 	background('skyblue');
 
+
   if (holding) {
     startDelivery()
   }
@@ -107,5 +114,11 @@ q5.update = function () {
   deliver(player, deliveryText)
   displayMoney()
   levelUp()
+
+  if (mainMenuVisible === true) {
+    showMainMenu()
+  } else {
+    hideMainMenu()
+  }
 };
 
