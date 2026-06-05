@@ -5,7 +5,7 @@ let mainMenu
 export function initMainMenu() {
     mainMenu = new Group()
     mainMenu.visible = false 
-    mainMenu.layer = 99999
+    mainMenu.layer = 99
     mainMenu.overlap(allSprites)
 
     let logo = new mainMenu.Sprite()
@@ -13,6 +13,8 @@ export function initMainMenu() {
     logo.physics = STATIC
     logo.stroke = 'transparent'; 
     logo.scale = .2
+    logo.layer = 99
+    logo.overlap(allSprites)
 
     
 

@@ -4,6 +4,7 @@ import {deliver, initdelivery, startDelivery, currentDelivery, finishDelivery} f
 import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 import {initLevels, levelUp} from './UI/levels.js'
 import {initMainMenu, showMainMenu, hideMainMenu} from "./UI/mainmenu.js"
+import {initShop, displayShop} from "./UI/shop.js"
 await Canvas();
 
 export let ui
@@ -29,11 +30,13 @@ player.layer = 9
 initTimer()
 initMoney()
 initLevels()
+initShop()
 
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
 
-initMainMenu()
+//initMainMenu()
+
 
 
 let boxes = new Group()
@@ -114,11 +117,11 @@ q5.update = function () {
   deliver(player, deliveryText)
   displayMoney()
   levelUp()
-
-  if (mainMenuVisible === true) {
-    showMainMenu()
-  } else {
-    hideMainMenu()
-  }
+  displayShop()
+  // if (mainMenuVisible === true) {
+  //   showMainMenu()
+  // } else {
+  //   hideMainMenu()
+  // }
 };
 
