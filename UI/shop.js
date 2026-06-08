@@ -1,4 +1,5 @@
 import {ui} from '../sketch.js'
+import {balance, giveMoney} from "./money.js"
 
 let spriteButton
 let shopMenu
@@ -32,7 +33,7 @@ export function initShop(){
     shopButton.color = "green"
 
     let bttn =  new shopButton.Sprite()
-    bttn.text = "increase speed"
+    bttn.text = "increase speed \n$1.00"
     bttn.x = 50
     shopButtons.push(bttn)
 }
@@ -48,8 +49,8 @@ export function displayShop(){
     shopMenu.y = lerp(shopMenu.y, cy, .5)
 
     for (let i = 0; i < shopButtons.length; i++) {
-        shopButtons[i].x = lerp(shopMenu.x, cx*i, .5)
-        shopButtons[i].y = lerp(shopMenu.y, cy, .5)
+        shopButtons[i].x = cx*i
+        shopButtons[i].y = cy
     }
 
     if (mouse.x <= cx+(spriteButton.w/2) && mouse.x >= cx-(spriteButton.w/2) &&
@@ -76,7 +77,8 @@ export function displayShop(){
         {
             shopButtons[i].color = "gray"
     
-            if (mouse.presses()) {
+            if (mouse.presses() && balance >= 1) {
+                giveMoney(-1)
                 speed++
                 shopButtons[i].color = "darkgray"
 

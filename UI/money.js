@@ -1,6 +1,6 @@
 import {ui} from '../sketch.js'
 
-let balance = 0
+export let balance = 0
 let paymentComplete = false
 let cashUI
 let popup
@@ -23,9 +23,9 @@ export function giveMoney(pay){
 
         if (popup) return;
         popup = new ui.Sprite();
-        popup.text = `+$${pay.toFixed(2)}`;
-        popup.fill = "transparent"
+        popup.text = pay > 0? `+$${pay.toFixed(2)}` : `-$${(pay*-1).toFixed(2)}`
         popup.stroke = "transparent"
+        popup.fill = "transparent"
         popup.textFill = 'black';
         popup.textSize = 14;
         popup.layer = 1000; 
