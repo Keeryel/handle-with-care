@@ -53,7 +53,7 @@ export function finishDelivery() {
     let strSecs = seconds < 10 ? "0" + seconds : seconds;
     
     popup = new ui.Sprite();
-    popup.text = `Finished Delivery! ${strMins}:${strSecs}`;
+    popup.text = `Finished Delivery! + 30 sec`;
     popup.fill = "transparent"
     popup.stroke = "transparent"
     popup.textFill = 'black';
