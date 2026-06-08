@@ -13,7 +13,6 @@ export function initMainMenu() {
     logo.physics = STATIC
     logo.stroke = 'transparent'; 
     logo.scale = .2
-    logo.layer = 99
     logo.overlap(allSprites)
 
     

@@ -13,6 +13,7 @@ export function initPlayer() {
   plyr.h = plyr.w;
   plyr.drag = 15;
   plyr.mass = 20;
+  plyr.img = "./assets/guy.png"
   plyr.rotationDrag = 0.1; // Fixed rotation drag
 
   const offsetDistance = plyr.w; 
