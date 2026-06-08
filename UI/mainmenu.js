@@ -1,9 +1,9 @@
-import {ui} from '../sketch.js'
+import {menu} from '../sketch.js'
 
 let mainMenu
 
 export function initMainMenu() {
-    mainMenu = new Group()
+    mainMenu = new menu.Group()
     mainMenu.visible = false 
     mainMenu.layer = 99
     mainMenu.overlap(allSprites)
@@ -13,7 +13,6 @@ export function initMainMenu() {
     logo.physics = STATIC
     logo.stroke = 'transparent'; 
     logo.scale = .2
-    logo.layer = 99
     logo.overlap(allSprites)
 
     
