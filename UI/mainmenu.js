@@ -1,4 +1,4 @@
-import {menu} from '../sketch.js'
+import {ui, menu} from '../sketch.js'
 
 let mainMenu
 

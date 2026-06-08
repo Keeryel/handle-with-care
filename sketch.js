@@ -5,7 +5,10 @@ import {initMoney, giveMoney, displayMoney} from './UI/money.js'
 import {initLevels, levelUp} from './UI/levels.js'
 import {initMainMenu, showMainMenu, hideMainMenu} from "./UI/mainmenu.js"
 import {initShop, displayShop} from "./UI/shop.js"
+// import * as map from "./assets/map.json"
 await Canvas();
+
+map = await load("/assets/map.json")
 
 export let ui
 export let menu
@@ -31,12 +34,10 @@ initTimer()
 initMoney()
 initLevels()
 initShop()
+//initMainMenu()
 
 let deliveryText = initdelivery(player)
 deliveryText.layer = 8
-
-//initMainMenu()
-
 
 
 let boxes = new Group()
@@ -57,41 +58,59 @@ smallBox.visible = false
 let boundary =  new Group()
 boundary.layer = 3
 
-let borderY1 = new boundary.Sprite();
-borderY1.x = 0;
-borderY1.y = -800;
-borderY1.w = 1600;
-borderY1.h = 100;
-borderY1.rotation = 0;
-borderY1.physics = STATIC;
+// let borderY1 = new boundary.Sprite();
+// borderY1.x = 0;
+// borderY1.y = 1500;
+// borderY1.w = 1600;
+// borderY1.h = 100;
+// borderY1.rotation = 0;
+// borderY1.physics = STATIC;
 
-let borderY2 = new boundary.Sprite();
-borderY2.x = 0;
-borderY2.y = 800
-borderY2.w = 1600;
-borderY2.h = 100;
-borderY2.rotation = 0;
-borderY2.physics = STATIC;
+// let borderY2 = new boundary.Sprite();
+// borderY2.x = 0;
+// borderY2.y = -100
+// borderY2.w = 1600;
+// borderY2.h = 100;
+// borderY2.rotation = 0;
+// borderY2.physics = STATIC;
 
-let borderX1 = new boundary.Sprite();
-borderX1.x = 800;
-borderX1.y = 0;
-borderX1.w = 1600;
-borderX1.h = 100;
-borderX1.rotation = 90;
-borderX1.physics = STATIC;
+// let borderX1 = new boundary.Sprite();
+// borderX1.x = 800;
+// borderX1.y = 0;
+// borderX1.w = 1600;
+// borderX1.h = 100;
+// borderX1.rotation = 90;
+// borderX1.physics = STATIC;
 
-let borderX2 = new boundary.Sprite();
-borderX2.x = -800;
-borderX2.y = 0;
-borderX2.w = 1600;
-borderX2.h = 100;
-borderX2.rotation = 90;
-borderX2.physics = STATIC;
+// let borderX2 = new boundary.Sprite();
+// borderX2.x = -800;
+// borderX2.y = 0;
+// borderX2.w = 1600;
+// borderX2.h = 100;
+// borderX2.rotation = 90;
+// borderX2.physics = STATIC;
+
+if (map.map) {
+
+  for (let y = 0; y <= 9; y++) {
+    for (let x = 0; x <=  9; x++) {
+      print(map.map[y][x])
+  
+      let sprite = new Sprite()
+      sprite.w = 200
+      sprite.h = 200
+      sprite.physics = STATIC
+      sprite.scale = 7*4
+      sprite.x = x * 200
+      sprite.y = y * 200
+      sprite.overlap(allSprites)
+      sprite.img = "assets/tile_"+map.map[y][x]+".png"
+    }
+  }
+    }
 
 q5.update = function () {
 	background('skyblue');
-
 
   if (holding) {
     startDelivery()
