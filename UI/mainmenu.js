@@ -1,9 +1,9 @@
-import {ui} from '../sketch.js'
+import {ui, menu} from '../sketch.js'
 
 let mainMenu
 
 export function initMainMenu() {
-    mainMenu = new Group()
+    mainMenu = new menu.Group()
     mainMenu.visible = false 
     mainMenu.layer = 99
     mainMenu.overlap(allSprites)
